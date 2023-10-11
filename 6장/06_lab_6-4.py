@@ -18,38 +18,39 @@
                 사용자가 입력할 값은 max 또는 min
             4) 입력받은 max 또는 min과 생성된 리스트를 가지고 함수 호출
 '''
-import random  # 랜덤 함수를 가져옵니다
+import random   # 랜덤 함수 불러오기
 
-def get_random_numbers():
-        random_numbers = [random.randint(10,99) for i in range(10)] # 10에서 99사이의 숫자 중 10개를 무작위 숫자로 리스트를만듭니다.
-        return random_numbers   # 무작위 숫자 리스트를 돌려줍니다.
+# 함수 선언
 
-def find_max_or_min(random_numbers,option): 
-        if option == 'max':
-            result = max(random_numbers)  # max 선택 시, 리스트 내에서 최대값 찾아 result에 저장
-        if option == 'min':
-            result = min(random_numbers)    # min 선택 시, 리스트 내에서 최소값 찾아 result에 저장
+# 두 값을 전달받아 매개변수에 저장
+def max_or_min(numbers, maxmin): 
+    if maxmin == 'max':             # maxmin이 max이면 result는 최대값
+        result = max(numbers)
+    if maxmin == 'min':             # maxmin이 min이면 result는 최소값
+        result = min(numbers)
         
-        return result   # 이 결과 값을 돌려줍니다.
+    
+    return result                   # result 값을 호출한 곳으로 돌려준다.
 
-while True: # 무한반복 시키기.
+while True :        # 무한반복
     
-    random_numbers = get_random_numbers()   # 무작위 숫자 리스트를 생성
-    option = input("최대값을 알고싶으시면 max 최소값을 알고싶으시면 min을 입력하시오")  # 사용자로부터 최대값을 알고싶은지 최소값을 알고싶은지 입력받는다.
+    random_numbers = [random.randint(10,99) for i in range(10)]     # 10에서 99사이의 10개 랜덤숫자 리스트 생성
     
-    result = find_max_or_min(random_numbers, option)    # 사용자가 입력한 것에따라 리스트 내에 최대값 또는 최소값을 찾습니다.
+    print("생성된 랜덤숫자 리스트", random_numbers)                   # 생성된 리스트 출력
     
-    if result is not None:  # 결과 값이 None이 아닌 경우
-        if option == 'max': 
-            print(f"최대값은 {result}입니다.")  # max 입력시 최대값 출력
+    maxmin = input("최대값을 알고싶으시면 max 최소값을 알고싶으시면 min을 입력하시오")  # 사용자에게 최대값을 알고싶은지 최소값을 알고싶은지 입력받기.
     
-        elif option == 'min':
-            print(f"최소값은 {result}입니다.")  # min 입력시 최소값 출력
+    result = max_or_min(random_numbers, maxmin)       # 입력받은 값 max 또는 min과 생성된 리스트를 가지고 함수 호출
     
-    else :
-        print("잘못된 입력입니다. max 또는 min을 입력해주세요.") # max min이 아닌 다른 값을 넣을경우 메세지 출력.
+    
         
-
+    if maxmin == 'max':           # max를 입력하였을 때 최대값 출력
+            print(f"최대값은 {result} 입니다.")
+        
+    if maxmin == 'min':         # min을 입력하였을 때 최소값 출력
+            print(f"최소값은 {result} 입니다.")
+   
+        
 
         
 
